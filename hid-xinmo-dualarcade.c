@@ -4,9 +4,7 @@
  *  is sent, because hid-input in Linux > 3.x ignores out pf bounds values.
  *  (This module is based on "hid-saitek".)
  *
- *  Olivier Scherler
- *
- *  Copyright (c) 2012 Andreas Hübner
+ *  Copyright (c) 2013 Olivier Scherler
  */
 
 /*
@@ -40,6 +38,27 @@ static __u8 *xinmo_report_fixup(struct hid_device *hdev, __u8 *rdesc,
 	return rdesc;
 }
 
+static int xinmo_event(struct hid_device *hdev, struct hid_field *field,
+		struct hid_usage *usage, __s32 value)
+{
+	//struct xinmo_drv_data *drv_data = (struct lg_drv_data *)hid_get_drvdata(hdev);
+
+	switch(usage->code) {
+		case ABS_X:
+		case ABS_Y:
+		case ABS_Z:
+		case ABS_RX:
+			if(value < -1) {
+				input_event(field->hidinput->input, usage->type, usage->code,
+						-1);
+				return 1;
+			}
+			break;
+	}
+
+	return 0;
+}
+
 static const struct hid_device_id xinmo_devices[] = {
 	{ HID_USB_DEVICE(USB_VENDOR_ID_XIN_MO, USB_DEVICE_ID_XIN_MO_DUAL_ARCADE)},
 	{ }
@@ -50,7 +69,8 @@ MODULE_DEVICE_TABLE(hid, xinmo_devices);
 static struct hid_driver xinmo_driver = {
 	.name = "xinmo",
 	.id_table = xinmo_devices,
-	.report_fixup = xinmo_report_fixup
+	//.report_fixup = xinmo_report_fixup
+	.event = xinmo_event
 };
 
 static int __init xinmo_init(void)
