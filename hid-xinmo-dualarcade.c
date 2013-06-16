@@ -1,8 +1,9 @@
 /*
  *  HID driver for the Xin-Mo Dual Arcade controller.
- *  Fixes the HID report descriptor by reporting the actual axis minimum that
- *  is sent, because hid-input in Linux > 3.x ignores out pf bounds values.
- *  (This module is based on "hid-saitek".)
+ *  Fixes the negative axix event values (-2) to match the HID report
+ *  descriptor axis minimum (-1), because hid-input in Linux > 3.x ignores out
+ *  of bounds values.
+ *  (This module is based on "hid-saitek" and "hid-lg".)
  *
  *  Copyright (c) 2013 Olivier Scherler
  */
@@ -38,6 +39,9 @@ static __u8 *xinmo_report_fixup(struct hid_device *hdev, __u8 *rdesc,
 	return rdesc;
 }
 
+/*
+ * Fix negative events that are out of bounds.
+ */
 static int xinmo_event(struct hid_device *hdev, struct hid_field *field,
 		struct hid_usage *usage, __s32 value)
 {
