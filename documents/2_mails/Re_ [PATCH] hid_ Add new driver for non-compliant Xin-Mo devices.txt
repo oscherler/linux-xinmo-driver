@@ -1,0 +1,43 @@
+From jkosina@suse.cz Mon Jul 29 11:51:58 2013
+Delivered-To: oscherler@ithink.ch
+Received: by 10.220.116.141 with SMTP id m13csp136174vcq;
+        Mon, 29 Jul 2013 02:51:59 -0700 (PDT)
+X-Received: by 10.14.32.197 with SMTP id o45mr59406126eea.9.1375091518457;
+        Mon, 29 Jul 2013 02:51:58 -0700 (PDT)
+Return-Path: <jkosina@suse.cz>
+Received: from mx2.suse.de (cantor2.suse.de. [195.135.220.15])
+        by mx.google.com with ESMTP id a42si52417134eeb.311.2013.07.29.02.51.58
+        for <oscherler@ithink.ch>;
+        Mon, 29 Jul 2013 02:51:58 -0700 (PDT)
+Received-SPF: neutral (google.com: 195.135.220.15 is neither permitted nor denied by best guess record for domain of jkosina@suse.cz) client-ip=195.135.220.15;
+Authentication-Results: mx.google.com;
+       spf=neutral (google.com: 195.135.220.15 is neither permitted nor denied by best guess record for domain of jkosina@suse.cz) smtp.mail=jkosina@suse.cz
+Received: from relay2.suse.de (unknown [195.135.220.254])
+	by mx2.suse.de (Postfix) with ESMTP id D6DA6A41E0;
+	Mon, 29 Jul 2013 11:51:57 +0200 (CEST)
+Date: Mon, 29 Jul 2013 11:51:55 +0200 (CEST)
+From: Jiri Kosina <jkosina@suse.cz>
+To: Olivier Scherler <oscherler@ithink.ch>
+Cc: linux-kernel@vger.kernel.org, linux-input@vger.kernel.org
+Subject: Re: [PATCH] hid: Add new driver for non-compliant Xin-Mo devices.
+In-Reply-To: <1374945602-11894-2-git-send-email-oscherler@ithink.ch>
+Message-ID: <alpine.LNX.2.00.1307291151370.18809@pobox.suse.cz>
+References: <1374945602-11894-1-git-send-email-oscherler@ithink.ch> <1374945602-11894-2-git-send-email-oscherler@ithink.ch>
+User-Agent: Alpine 2.00 (LNX 1167 2008-08-23)
+MIME-Version: 1.0
+Content-Type: TEXT/PLAIN; charset=US-ASCII
+
+On Sat, 27 Jul 2013, oscherler@ithink.ch wrote:
+
+> From: Olivier Scherler <oscherler@ithink.ch>
+> 
+> The driver currently only supports the Dual Arcade controller.
+> It fixes the negative axis event values (the devices sends -2) to match the
+> logical axis minimum of the HID report descriptor (the report announces -1).
+> It is needed because hid-input discards out of bounds values.
+
+Applied, thanks Olivier.
+
+-- 
+Jiri Kosina
+SUSE Labs
