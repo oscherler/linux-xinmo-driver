@@ -1,0 +1,4 @@
+Linux commit on which the patched was based:
+
+6c504ecf506705a6575541b28824e13090bd223b
+<https://github.com/torvalds/linux/commit/6c504ecf506705a6575541b28824e13090bd223b>

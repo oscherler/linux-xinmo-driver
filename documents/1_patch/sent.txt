@@ -1,0 +1,13 @@
+Sent to linux-kernel and linux-input on Sat, 27 Jul 2013 19:20:01 +0200.
+
+jkosina@suse.cz
+linux-kernel@vger.kernel.org
+linux-input@vger.kernel.org
+
+http://lkml.iu.edu/hypermail/linux/kernel/1307.3/02567.html
+http://lkml.iu.edu/hypermail/linux/kernel/1307.3/02568.html
+http://lkml.iu.edu/hypermail/linux/kernel/1307.3/02941.html
+
+http://www.spinics.net/lists/linux-input/msg26821.html
+http://www.spinics.net/lists/kernel/msg1574739.html
+http://www.spinics.net/lists/kernel/msg1575113.html
