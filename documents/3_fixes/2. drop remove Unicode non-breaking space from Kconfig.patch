@@ -1,0 +1,28 @@
+commit e2c76a8bad2fbeafcfb80aa749212b4b16e60257
+Author: Brian Norris <computersforpeace@gmail.com>
+Date:   Tue Jun 10 14:35:36 2014 -0700
+
+    HID: Kconfig: drop remove Unicode non-breaking space from Kconfig
+    
+    There is a UTF-8 non-breaking space character (0xc2 0xa0) after the "Y"
+    in "Say Y here". This is probably not intentional. Replace it with a
+    standard ASCII space (0x20).
+    
+    If you can't see a difference here, I don't blame you :)
+    
+    Signed-off-by: Brian Norris <computersforpeace@gmail.com>
+    Signed-off-by: Jiri Kosina <jkosina@suse.cz>
+
+diff --git a/drivers/hid/Kconfig b/drivers/hid/Kconfig
+index 800c8b6..08c9693 100644
+--- a/drivers/hid/Kconfig
++++ b/drivers/hid/Kconfig
+@@ -785,7 +785,7 @@ config HID_XINMO
+ 	depends on HID
+ 	---help---
+ 	Support for Xin-Mo devices that are not fully compliant with the HID
+-	standard. Currently only supports the Xin-Mo Dual Arcade. Say Y here
++	standard. Currently only supports the Xin-Mo Dual Arcade. Say Y here
+ 	if you have a Xin-Mo Dual Arcade controller.
+ 
+ config HID_ZEROPLUS

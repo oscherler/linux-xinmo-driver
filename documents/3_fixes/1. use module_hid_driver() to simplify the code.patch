@@ -1,0 +1,34 @@
+commit c0b20fd9b67a57327074726c60640a957dab91e3
+Author: Wei Yongjun <yongjun_wei@trendmicro.com.cn>
+Date:   Fri Aug 23 11:06:19 2013 +0800
+
+    HID: use module_hid_driver() to simplify the code
+    
+    module_hid_driver() makes the code simpler by eliminating
+    boilerplate code.
+    
+    Signed-off-by: Wei Yongjun <yongjun_wei@trendmicro.com.cn>
+    Signed-off-by: Jiri Kosina <jkosina@suse.cz>
+
+diff --git a/drivers/hid/hid-xinmo.c b/drivers/hid/hid-xinmo.c
+index 6153e50..7df5227 100644
+--- a/drivers/hid/hid-xinmo.c
++++ b/drivers/hid/hid-xinmo.c
+@@ -57,16 +57,5 @@ static struct hid_driver xinmo_driver = {
+ 	.event = xinmo_event
+ };
+ 
+-static int __init xinmo_init(void)
+-{
+-	return hid_register_driver(&xinmo_driver);
+-}
+-
+-static void __exit xinmo_exit(void)
+-{
+-	hid_unregister_driver(&xinmo_driver);
+-}
+-
+-module_init(xinmo_init);
+-module_exit(xinmo_exit);
++module_hid_driver(xinmo_driver);
+ MODULE_LICENSE("GPL");
