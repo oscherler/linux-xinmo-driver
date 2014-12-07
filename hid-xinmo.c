@@ -1,8 +1,8 @@
 /*
- *  HID driver for the Xin-Mo Dual Arcade controller.
- *  Fixes the negative axix event values (-2) to match the HID report
- *  descriptor axis minimum (-1), because hid-input in Linux > 3.x ignores out
- *  of bounds values.
+ *  HID driver for Xin-Mo devices, currently only the Dual Arcade controller.
+ *  Fixes the negative axis event values (the devices sends -2) to match the
+ *  logical axis minimum of the HID report descriptor (the report announces
+ *  -1). It is needed because hid-input discards out of bounds values.
  *  (This module is based on "hid-saitek" and "hid-lg".)
  *
  *  Copyright (c) 2013 Olivier Scherler
